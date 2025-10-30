@@ -1,0 +1,8 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "health_report_form",
+    "symptom_form",
+    "connection_form"
+  ]
+}

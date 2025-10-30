@@ -1,0 +1,147 @@
+version: "3.1"
+
+intents:
+  # Basic conversation
+  - greet
+  - goodbye
+  - thanks
+  # Website/Project Info (Logged-out & Logged-in)
+  - get_started
+  - pricing_and_cost
+  - enterprise_solutions
+  - api_access
+  - about_team
+  - about_project
+  - how_to_use_map
+  - health_correlation_details
+  - get_live_data_info # General info where to find it
+  # General Environment Knowledge (Logged-out & Logged-in)
+  - what_is_aqi
+  - causes_of_pollution
+  - how_to_reduce_pollution
+  - health_effects # General health effects
+  - ask_pollutant_info # Specific pollutant definitions
+  # Logged-in User Features
+  - ask_eco_points
+  - ask_my_reports
+  - ask_daily_mission
+  - ask_leaderboard_top
+  - report_symptom # Triggers form
+  - create_health_report # Triggers form
+  - request_connection # Triggers form
+  # Other
+  - handle_login # How to log in
+
+entities:
+  - pollutant
+  - symptom_entity # For reporting symptoms
+  - location # For health reports
+  - user_name # For connection requests
+
+slots:
+  symptom:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: symptom_entity
+  report_location:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: location
+  connection_recipient:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_name
+
+forms:
+  symptom_form:
+    required_slots:
+      - symptom
+  health_report_form:
+    required_slots:
+      - report_location # Add more slots like description if needed later
+  connection_form:
+    required_slots:
+      - connection_recipient
+
+responses:
+  # Basic Utterances
+  utter_greet:
+  - text: "Hey! Welcome to AI Nose 3.0. How can I help?"
+  utter_goodbye:
+  - text: "Bye! Stay safe and breathe clean."
+  utter_thanks:
+  - text: "You're welcome!"
+  utter_handle_login:
+  - text: "You can log in to your account by clicking the 'Get Started' or a 'Login' button, usually in the top-right corner of the website."
+  # General Knowledge / Website Info Utterances (Available to all)
+  utter_get_started:
+  - text: "To get started, simply click the 'Get Started' or 'Join the Movement' button on our website to create an account and explore the dashboard."
+  utter_pricing_and_cost:
+  - text: "We offer a robust free plan for community members. For advanced features like bulk data export and API access, we have dedicated 'Enterprise & Research Solutions'."
+  utter_enterprise_solutions:
+  - text: "Our Enterprise Solutions offer research-grade forecasting, bulk data exports, custom API endpoints, and advanced analytics for smart city planning and academic research."
+  utter_api_access:
+  - text: "Yes, we offer custom API endpoints as part of our Enterprise & Research Solutions, allowing you to integrate our data into your own applications."
+  utter_about_team:
+  - text: "AI Nose - 3.0 was created by a passionate team consisting of Subhranil Biswas, Debojyoti Ghosh, Soumyadeep Mitra, and Kaustav Mandal."
+  utter_about_project:
+  - text: "AI Nose - 3.0 is an intelligent environmental platform designed to provide a deep and dynamic understanding of air quality. Instead of just showing static numbers, it integrates multiple layers of data in real-time, including information from low-cost sensors, live weather patterns, and satellite imagery. Using powerful AI models, the system analyzes these factors to not only report current pollution levels but also to forecast potential pollution spikes, providing clear, actionable insights for communities and researchers."
+  utter_how_to_use_map:
+  - text: "Our interactive dashboard provides a map-based view of environmental data. You can zoom, click on data points, and switch between data layers like pollution levels and weather."
+  utter_health_correlation_details:
+  - text: "Our Health Correlation feature allows the community to log symptoms, which our system can then analyze alongside air quality data to understand the real-world health impact of pollution."
+  utter_get_live_data_info:
+  - text: "Our website's interactive dashboard provides live, real-time pollution data. It displays the current AQI and levels for key pollutants for various locations."
+  utter_what_is_aqi:
+  - text: "AQI stands for Air Quality Index. It's a scale from 0 to 500 used to communicate how polluted the air currently is. A higher value means greater pollution."
+  utter_causes_of_pollution:
+  - text: "Air pollution comes from various sources, including emissions from vehicles, industrial processes, burning of fossil fuels, and natural events like wildfires."
+  utter_how_to_reduce_pollution:
+  - text: "You can help reduce air pollution by using public transportation, conserving energy at home, reducing waste, and supporting policies that promote clean energy."
+  utter_health_effects: # General health effects (used by action if needed)
+  - text: "Long-term exposure to air pollution can cause chronic respiratory diseases, heart disease, and lung cancer. Short-term exposure can cause irritation to the eyes, nose, and throat."
+  # Form related utterances
+  utter_ask_symptom:
+  - text: "Okay, what symptom would you like to report?"
+  utter_ask_report_location:
+  - text: "Sure, for which location are you creating this health report?"
+  utter_ask_connection_recipient:
+  - text: "Okay, who would you like to send a connection request to? Please provide their username."
+  # Helper Utterances
+  utter_need_login:
+  - text: "Sorry, you need to be logged in to access this information. Please log in on the website."
+  utter_moderation_warning:
+  - text: "Please keep the conversation professional and respectful."
+  utter_out_of_scope:
+  - text: "I can answer questions related to the environment and the AI Nose platform. How can I help you with that?"
+  utter_default: # Default fallback if custom action fails or confidence is high
+  - text: "Sorry, I didn't quite understand that. Could you rephrase?"
+  - text: "I'm not sure how to respond to that. I can help with AI Nose features and air quality topics."
+
+actions:
+  # Custom actions for pollutant info and logged-in features
+  - action_explain_pollutant # Handles multi-pollutant lookup
+  - action_get_eco_points
+  - action_get_my_reports
+  - action_get_daily_mission
+  - action_get_leaderboard_top
+  - action_report_symptom # Runs after symptom_form
+  - action_create_health_report # Runs after health_report_form
+  - action_send_connection_request
+  - action_health_effects # Runs after connection_form
+  # Fallback action
+  - action_general_knowledge_fallback
+  # Default Rasa SDK validation actions (Rasa generates these)
+  - validate_symptom_form
+  - validate_health_report_form
+  - validate_connection_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

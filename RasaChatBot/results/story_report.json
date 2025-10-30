@@ -1,0 +1,81 @@
+{
+  "": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "utter_about_team": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "pricing_and_cost": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 1
+  },
+  "action_explain_pollutant": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 6
+  },
+  "ask_pollutant_info": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 1
+  },
+  "about_team": {
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1-score": 0.6666666666666666,
+    "support": 1
+  },
+  "None": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2
+  },
+  "utter_pricing_and_cost": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "micro avg": {
+    "precision": 0.75,
+    "recall": 0.5294117647058824,
+    "f1-score": 0.6206896551724139,
+    "support": 17
+  },
+  "macro avg": {
+    "precision": 0.6111111111111112,
+    "recall": 0.7222222222222222,
+    "f1-score": 0.6296296296296295,
+    "support": 17
+  },
+  "weighted avg": {
+    "precision": 0.6176470588235294,
+    "recall": 0.5294117647058824,
+    "f1-score": 0.5294117647058824,
+    "support": 17
+  },
+  "accuracy": 0.5294117647058824,
+  "conversation_accuracy": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "with_warnings": 0,
+    "total": 3
+  }
+}

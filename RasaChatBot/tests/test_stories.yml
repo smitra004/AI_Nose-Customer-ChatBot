@@ -1,0 +1,19 @@
+version: "3.1"
+stories:
+- story: user asks about pricing
+  steps:
+  - user: "how much does it cost?"
+  - intent: pricing_and_cost
+  - action: utter_pricing_and_cost
+
+- story: user asks about the team
+  steps:
+  - user: "who made this?"
+  - intent: about_team
+  - action: utter_about_team
+
+- story: user asks about multiple pollutants
+  steps:
+  - user: "tell me about co and so2"
+  - intent: ask_pollutant_info
+  - action: action_explain_pollutant

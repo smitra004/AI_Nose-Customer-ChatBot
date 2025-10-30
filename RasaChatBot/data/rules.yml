@@ -1,0 +1,146 @@
+version: "3.1"
+rules:
+# Basic Conversation Rules
+- rule: Greet the user
+  steps:
+  - intent: greet
+  - action: utter_greet
+- rule: Say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Handle thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+- rule: Handle login info request
+  steps:
+  - intent: handle_login
+  - action: utter_handle_login
+
+# Website / General Info Rules
+- rule: Explain how to get started
+  steps:
+  - intent: get_started
+  - action: utter_get_started
+- rule: Explain pricing
+  steps:
+  - intent: pricing_and_cost
+  - action: utter_pricing_and_cost
+- rule: Explain enterprise solutions
+  steps:
+  - intent: enterprise_solutions
+  - action: utter_enterprise_solutions
+- rule: Explain API access
+  steps:
+  - intent: api_access
+  - action: utter_api_access
+- rule: Talk about the team
+  steps:
+  - intent: about_team
+  - action: utter_about_team
+- rule: Explain the project
+  steps:
+  - intent: about_project
+  - action: utter_about_project
+- rule: Explain how to use the map
+  steps:
+  - intent: how_to_use_map
+  - action: utter_how_to_use_map
+- rule: Explain health correlation
+  steps:
+  - intent: health_correlation_details
+  - action: utter_health_correlation_details
+- rule: Explain where to get live data
+  steps:
+  - intent: get_live_data_info
+  - action: utter_get_live_data_info
+- rule: Explain AQI
+  steps:
+  - intent: what_is_aqi
+  - action: utter_what_is_aqi
+- rule: Explain causes of pollution
+  steps:
+  - intent: causes_of_pollution
+  - action: utter_causes_of_pollution
+- rule: Explain how to reduce pollution
+  steps:
+  - intent: how_to_reduce_pollution
+  - action: utter_how_to_reduce_pollution
+- rule: Explain general health effects
+  steps:
+  - intent: health_effects # The action handles location-awareness if logged in
+  - action: action_health_effects # Assuming action exists
+
+# Pollutant Info Rule
+- rule: Respond to pollutant questions
+  steps:
+  - intent: ask_pollutant_info
+  - action: action_explain_pollutant
+
+# Logged-in Feature Rules
+- rule: Handle Eco Points request
+  steps:
+  - intent: ask_eco_points
+  - action: action_get_eco_points
+- rule: Handle My Reports request
+  steps:
+  - intent: ask_my_reports
+  - action: action_get_my_reports
+- rule: Handle Daily Mission request
+  steps:
+  - intent: ask_daily_mission
+  - action: action_get_daily_mission
+- rule: Handle Leaderboard request
+  steps:
+  - intent: ask_leaderboard_top
+  - action: action_get_leaderboard_top
+
+# Form Activation Rules
+- rule: Activate symptom form
+  steps:
+  - intent: report_symptom
+  - action: symptom_form
+  - active_loop: symptom_form
+- rule: Activate health report form
+  steps:
+  - intent: create_health_report
+  - action: health_report_form
+  - active_loop: health_report_form
+- rule: Activate connection form
+  steps:
+  - intent: request_connection
+  - action: connection_form
+  - active_loop: connection_form
+
+# Form Submission Rules (These run the final action *after* the form)
+- rule: Submit symptom form
+  condition:
+  - active_loop: symptom_form
+  steps:
+  - action: symptom_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_report_symptom
+- rule: Submit health report form
+  condition:
+  - active_loop: health_report_form
+  steps:
+  - action: health_report_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_create_health_report
+- rule: Submit connection form
+  condition:
+  - active_loop: connection_form
+  steps:
+  - action: connection_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_send_connection_request
+
+# NOTE: Fallback is handled by the FallbackClassifier and RulePolicy in config.yml
+# which trigger 'action_general_knowledge_fallback'

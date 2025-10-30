@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-location",
+      "2": "I-location",
+      "3": "L-location",
+      "4": "U-location",
+      "5": "B-pollutant",
+      "6": "I-pollutant",
+      "7": "L-pollutant",
+      "8": "U-pollutant",
+      "9": "B-symptom_entity",
+      "10": "I-symptom_entity",
+      "11": "L-symptom_entity",
+      "12": "U-symptom_entity",
+      "13": "B-user_name",
+      "14": "I-user_name",
+      "15": "L-user_name",
+      "16": "U-user_name",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-location": 1,
+      "I-location": 2,
+      "L-location": 3,
+      "U-location": 4,
+      "B-pollutant": 5,
+      "I-pollutant": 6,
+      "L-pollutant": 7,
+      "U-pollutant": 8,
+      "B-symptom_entity": 9,
+      "I-symptom_entity": 10,
+      "L-symptom_entity": 11,
+      "U-symptom_entity": 12,
+      "B-user_name": 13,
+      "I-user_name": 14,
+      "L-user_name": 15,
+      "U-user_name": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

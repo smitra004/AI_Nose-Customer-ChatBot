@@ -1,0 +1,16 @@
+version: "3.1"
+nlu:
+- intent: pricing_and_cost
+  examples: |
+    - how much is it
+    - what are the plans and prices?
+
+- intent: about_project
+  examples: |
+    - what is this website for?
+    - tell me about AI Nose
+
+- intent: ask_pollutant_info
+  examples: |
+    - tell me about [CO](pollutant) and [ozone](pollutant)
+    - what is [nitrogen dioxide](pollutant)

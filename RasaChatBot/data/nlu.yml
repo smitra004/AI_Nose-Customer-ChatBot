@@ -1,0 +1,188 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - how are you
+    - good morning
+    - good evening
+    - what's up
+    - yo
+    - heyo
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - cya
+    - see you later
+    - that's all
+    - I'm done now
+    - got to go
+    - talk to you later
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - that was helpful
+    - thanks a bunch
+    - much appreciated
+    - great, thx
+    - thank you so much
+- intent: get_started
+  examples: |
+    - How do I get started?
+    - How do I sign up?
+    - How to begin?
+    - I want to create an account
+    - What's the first step to using this?
+    - Where is the signup form?
+- intent: pricing_and_cost
+  examples: |
+    - Is this free?
+    - What are the pricing plans?
+    - How much does it cost?
+    - Is there a paid version?
+    - tell me about the price
+    - pricing
+    - price
+    - what are the subscription options
+    - plans and pricing
+    - what do enterprise plans cost
+    - tell me about the free version
+- intent: enterprise_solutions
+  examples: |
+    - Tell me about your enterprise features
+    - What are the research solutions?
+    - How can my company use this?
+    - what do you offer for businesses
+    - I'm a researcher, what can I do?
+    - corporate solutions
+    - what about business accounts
+- intent: api_access
+  examples: |
+    - Do you have an API for developers?
+    - Can I get an API key?
+    - How do I access your data programmatically?
+    - api access
+    - tell me about the api
+    - can i get your data with code
+- intent: about_team
+  examples: |
+    - Who are the founders?
+    - Who made this?
+    - Tell me about the team
+    - Who are the creators
+    - Who is on the team?
+    - who are the developers behind this
+    - team info
+- intent: about_project
+  examples: |
+    - what does this project do?
+    - tell me about this website
+    - what is AI Nose?
+    - What is your mission?
+    - What is the goal of this project?
+    - Why did you build this?
+    - Can you explain what this site is for?
+    - How does this site work?
+    - give me a summary of the project
+- intent: how_to_use_map
+  examples: |
+    - How do I use the map?
+    - How does the dashboard work?
+    - Can you explain the visualization?
+    - help with the map
+    - how do i see the data layers
+    - what can the dashboard do
+- intent: health_correlation_details
+  examples: |
+    - How does health correlation work?
+    - What are health symptoms logged?
+    - tell me more about the health feature
+    - why do you track health symptoms
+    - can you explain the health log
+- intent: get_live_data_info
+  examples: |
+    - What is the AQI right now?
+    - How is the air quality today?
+    - live pollution status
+    - where do I find the real-time data
+    - can I check the current pollution on your site
+- intent: what_is_aqi
+  examples: |
+    - What is AQI?
+    - Explain Air Quality Index
+    - what does an aqi number mean
+    - what is a good aqi score
+    - explain the aqi scale
+- intent: causes_of_pollution
+  examples: |
+    - What causes air pollution?
+    - Where does pollution come from?
+    - What are the main sources of bad air?
+    - what makes the air dirty
+    - where does pm2.5 come from
+    - main pollution sources
+- intent: how_to_reduce_pollution
+  examples: |
+    - How can I reduce pollution?
+    - What can we do to stop air pollution?
+    - How can I help?
+    - how do we fight air pollution
+    - tips for cleaner air
+    - how to improve air quality
+- intent: health_effects
+  examples: |
+    - How does air pollution affect health?
+    - Is air pollution dangerous?
+    - what are the health risks?
+    - is polluted air bad for you
+    - can smog make me sick
+    - dangers of bad air
+- intent: handle_login
+  examples: |
+    - login
+    - how do I log in?
+    - where do I sign in
+    - I want to access my account
+    - login page
+    - account access
+- intent: ask_pollutant_info
+  examples: |
+    - tell me about [carbon monoxide](pollutant)
+    - what is [ozone](pollutant)?
+    - can you explain [sulphur dioxide](pollutant)
+    - what is [pm2.5](pollutant)?
+    - tell me about [co](pollutant) and [so2](pollutant)
+    - what are [nitrogen dioxide](pollutant) and [ozone](pollutant)?
+    - can you explain [pm10](pollutant), [co](pollutant), and [no2](pollutant)
+    - i need to know about [carbon monoxide](pollutant)
+    - what's the deal with [pm10](pollutant)?
+    - info on [so2](pollutant)
+    - [no2](pollutant)
+    - define [O3](pollutant)
+    - explain [PM2.5](pollutant) vs [PM10](pollutant)
+- intent: report_symptom # Includes entity examples
+  examples: |
+    - I want to report a [headache](symptom_entity)
+    - log my [coughing](symptom_entity) symptom
+    - report [difficulty breathing](symptom_entity)
+    - i feel [dizzy](symptom_entity)
+    - my symptom is [itchy eyes](symptom_entity)
+    - log symptom
+- intent: create_health_report # Includes entity examples
+  examples: |
+    - create a new health report for [London](location)
+    - start a report about [Kolkata](location)
+    - new health report in [Paris](location)
+    - I want to make a report for [Mumbai](location)
+    - file a report
+- intent: request_connection # Includes entity examples
+  examples: |
+    - send a connection request to [John Doe](user_name)
+    - connect with [Alice](user_name)
+    - add [Bob](user_name) as a connection
+    - I want to connect with [Charlie Brown](user_name)
+    - find user [David](user_name)

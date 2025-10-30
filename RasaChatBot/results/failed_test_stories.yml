@@ -1,0 +1,23 @@
+version: "3.1"
+stories:
+- story: user asks about pricing (.\tests\test_stories.yml)
+  steps:
+  - user: |-
+      how much does it cost?
+  - action: action_listen  # predicted: action_default_fallback
+  - intent: pricing_and_cost
+  - action: utter_pricing_and_cost
+- story: user asks about the team (.\tests\test_stories.yml)
+  steps:
+  - user: |-
+      who made this?
+  - action: action_listen  # predicted: action_default_fallback
+  - intent: about_team
+  - action: utter_about_team
+- story: user asks about multiple pollutants (.\tests\test_stories.yml)
+  steps:
+  - user: |-
+      tell me about co and so2
+  - action: action_listen  # predicted: action_default_fallback
+  - intent: ask_pollutant_info
+  - action: action_explain_pollutant

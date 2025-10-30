@@ -1,0 +1,20 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-pollutant",
+      "2": "I-pollutant",
+      "3": "L-pollutant",
+      "4": "U-pollutant",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-pollutant": 1,
+      "I-pollutant": 2,
+      "L-pollutant": 3,
+      "U-pollutant": 4,
+      "O": 0
+    },
+    "num_tags": 5
+  }
+]
